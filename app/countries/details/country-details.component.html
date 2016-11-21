@@ -1,0 +1,14 @@
+<div *ngIf="country" class="details">
+    <ul  >
+        <li><span class="attribute">Population of Country: </span>{{country.population}}</li>
+        <li><span class="attribute">Area: </span>{{country.areaInSqKm}} square kilometers</li>
+        <li><span class="attribute">Capital: </span>{{country.capital}}</li>
+        <li *ngIf="country.populationOfCapital"> <span class="attribute">Population of Capital: </span>{{country.populationOfCapital}}</li>
+        <li *ngIf="country.neighbors"><span class="attribute">Neighbors: </span>
+            <span *ngFor="let neighbor of country.neighbors">{{neighbor}}
+                <span *ngIf="neighbor != country.neighbors[country.neighbors.length - 1]">, </span>
+            </span>
+        </li>
+    </ul>
+    <img src="http://www.geonames.org/flags/x/{{country.countryCode.toLowerCase()}}.gif"/>
+</div>
