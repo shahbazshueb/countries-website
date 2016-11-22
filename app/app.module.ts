@@ -10,8 +10,16 @@ import {CountryDetailsComponent} from "./countries/details/country-details.compo
 import {CountryService} from "./countries/countries.service";
 import {HttpModule} from "@angular/http";
 import {FooterComponent} from "./footer/footer.component";
+import { AgmCoreModule } from 'angular2-google-maps/core';
 @NgModule({
-    imports:      [ BrowserModule, AppRoutingModule, HttpModule ],
+    imports:      [
+        BrowserModule,
+        AppRoutingModule,
+        HttpModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyDi0WbtbDVRljx5JpKCTsW7zxROIyktifM'
+        })
+    ],
     declarations: [ AppComponent,
         HeaderComponent,
         HomeComponent,

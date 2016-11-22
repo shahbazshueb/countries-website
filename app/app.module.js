@@ -20,11 +20,19 @@ const country_details_component_1 = require("./countries/details/country-details
 const countries_service_1 = require("./countries/countries.service");
 const http_1 = require("@angular/http");
 const footer_component_1 = require("./footer/footer.component");
+const core_2 = require('angular2-google-maps/core');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, app_routes_1.AppRoutingModule, http_1.HttpModule],
+        imports: [
+            platform_browser_1.BrowserModule,
+            app_routes_1.AppRoutingModule,
+            http_1.HttpModule,
+            core_2.AgmCoreModule.forRoot({
+                apiKey: 'AIzaSyDi0WbtbDVRljx5JpKCTsW7zxROIyktifM'
+            })
+        ],
         declarations: [app_component_1.AppComponent,
             header_component_1.HeaderComponent,
             home_component_1.HomeComponent,

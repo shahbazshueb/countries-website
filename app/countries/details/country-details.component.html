@@ -11,4 +11,9 @@
         </li>
     </ul>
     <img src="http://www.geonames.org/flags/x/{{country.countryCode.toLowerCase()}}.gif"/>
+    <div *ngIf="country.latitude && country.longitude">
+    <sebm-google-map  [latitude]="country.latitude" [longitude]="country.longitude">
+        <sebm-google-map-marker [latitude]="country.latitude" [longitude]="country.longitude"></sebm-google-map-marker>
+    </sebm-google-map>
+    </div>
 </div>

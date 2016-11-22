@@ -48,15 +48,19 @@ export  class CountryService{
     {
         this.http.get(`${this.geoNamesUrl}neighboursJSON?username=${this.username}&country=${country.countryCode.toLowerCase()}`)
             .toPromise()
-            .then(response => {var responseArray = response.json().geonames
-                responseArray.forEach(obj => country.neighbors.push(obj.name))
+            .then(response => {
+                var responseArray = response.json().geonames;
+                responseArray.forEach(obj => country.neighbors.push(obj.name));
             })
             .catch(this.handleError)
     }
     getCapitalPopulation(country:Country): void{
-        this.http.get(`${this.geoNamesUrl}/searchJSON?name_startsWith=${country.capital}&username=${this.username}`)
+        this.http.get(`${this.geoNamesUrl}/searchJSON?name_startsWith=${country.capital}&${country.countryCode}&username=${this.username}`)
             .toPromise()
-            .then(response => {country.populationOfCapital = response.json().geonames[0].population;
+            .then(response => {
+                country.populationOfCapital = response.json().geonames[0].population;
+                country.latitude = +response.json().geonames[0].lat;
+                country.longitude = +response.json().geonames[0].lng;
             })
             .catch(this.handleError)
     }

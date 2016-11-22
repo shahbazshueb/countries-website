@@ -13,4 +13,6 @@ export  class Country{
     areaInSqKm: number;
     neighbors: string[];
     populationOfCapital: number;
+    latitude: number;
+    longitude: number;
 }
